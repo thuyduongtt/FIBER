@@ -26,6 +26,9 @@ def concat_all_gather(tensor):
 class FIBERTransformerSS(pl.LightningModule):
     def __init__(self, config):
         super().__init__()
+
+        print('!!!!', config)
+
         self.save_hyperparameters()
         self.config = config
 
