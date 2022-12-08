@@ -21,6 +21,8 @@ def swin_adapt_position_encoding(model, before=384, patch_size=32, after=384, su
     if after == before:
         return model
 
+    print(f'!!!! {before}, {patch_size}, {after}')
+
     grid_before = int(before / 32)
     grid_after = int(after / 32)
     before = 2 * grid_before - 1
