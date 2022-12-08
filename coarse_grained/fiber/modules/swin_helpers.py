@@ -26,6 +26,7 @@ def swin_adapt_position_encoding(model, before=384, patch_size=32, after=384, su
     grid_before = int(before / 32)
     grid_after = int(after / 32)
     before = 2 * grid_before - 1
+    before = 70 # fix bug
     after = 2 * grid_after - 1
     keys = [k for k in model if k.endswith(suffix)]
     assert len(keys) > 0
