@@ -30,8 +30,8 @@ def swin_adapt_position_encoding(model, before=384, patch_size=32, after=384, su
     keys = [k for k in model if k.endswith(suffix)]
     assert len(keys) > 0
     for key in keys:
-        print('Model key:', key)
         pos_embed = model[key]
+        print(pos_embed.shape)
         pos_embed = pos_embed.transpose(0, 1).view(-1, before, before)
         pos_embed = torch.nn.functional.interpolate(pos_embed.unsqueeze(0), size=(after, after), mode="bicubic")
         pos_embed = pos_embed.squeeze(0).permute((1, 2, 0))
