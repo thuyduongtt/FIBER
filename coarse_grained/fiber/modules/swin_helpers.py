@@ -11,7 +11,6 @@ from typing import Any, Callable, Optional, Tuple
 import torch
 import torch.nn as nn
 
-
 from timm.models.features import FeatureListNet, FeatureDictNet, FeatureHookNet
 from timm.models.hub import has_hf_hub, download_cached_file, load_state_dict_from_hf, load_state_dict_from_url
 from timm.models.layers import Conv2dSame, Linear
@@ -26,7 +25,7 @@ def swin_adapt_position_encoding(model, before=384, patch_size=32, after=384, su
     grid_before = int(before / 32)
     grid_after = int(after / 32)
     before = 2 * grid_before - 1
-    before = 70 # fix bug
+    before = 70  # fix bug
     after = 2 * grid_after - 1
     keys = [k for k in model if k.endswith(suffix)]
     assert len(keys) > 0
@@ -186,15 +185,15 @@ def adapt_input_conv(in_chans, conv_weight):
 
 
 def load_pretrained(
-    model,
-    img_size,
-    default_cfg=None,
-    num_classes=1000,
-    in_chans=3,
-    filter_fn=None,
-    strict=True,
-    progress=False,
-    resolution_before=384,
+        model,
+        img_size,
+        default_cfg=None,
+        num_classes=1000,
+        in_chans=3,
+        filter_fn=None,
+        strict=True,
+        progress=False,
+        resolution_before=384,
 ):
     """Load pretrained checkpoint
     Args:
@@ -442,17 +441,17 @@ def update_default_cfg_and_kwargs(default_cfg, kwargs, kwargs_filter):
 
 
 def swin_build_model_with_cfg(
-    model_cls: Callable,
-    variant: str,
-    pretrained: bool,
-    default_cfg: dict,
-    model_cfg: Optional[Any] = None,
-    feature_cfg: Optional[dict] = None,
-    pretrained_strict: bool = True,
-    pretrained_filter_fn: Optional[Callable] = None,
-    pretrained_custom_load: bool = False,
-    kwargs_filter: Optional[Tuple[str]] = None,
-    **kwargs,
+        model_cls: Callable,
+        variant: str,
+        pretrained: bool,
+        default_cfg: dict,
+        model_cfg: Optional[Any] = None,
+        feature_cfg: Optional[dict] = None,
+        pretrained_strict: bool = True,
+        pretrained_filter_fn: Optional[Callable] = None,
+        pretrained_custom_load: bool = False,
+        kwargs_filter: Optional[Tuple[str]] = None,
+        **kwargs,
 ):
     """Build model with specified default_cfg and optional model_cfg
     This helper fn aids in the construction of a model including:
